@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Rewards Hub | Earn Through Consumer Intelligence</title>
+    <meta name="description" content="Join the global standard for market research. Help world-class brands improve their products while earning digital gift cards, PayPal cash, and premium rewards.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-bg': '#EBE9E1',
+                        'accent': '#2C2420',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .btn-animate {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-animate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+
+<body class="bg-main-bg text-stone-800 font-sans" x-data="{ mobileMenu: false, openFaq: null }">
+
+    <!-- Trust Top Bar -->
+    <div class="glass-panel border-b border-white/20 py-3 text-center text-sm text-stone-600 font-medium">
+        <div class="container mx-auto px-6 flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+            <span class="flex items-center gap-1 text-amber-600">
+                <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+                <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+                <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+                <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+                <iconify-icon icon="lucide:star" class="text-sm"></iconify-icon>
+                <span class="font-bold text-stone-900 ml-1">4.9/5 RATING</span>
+            </span>
+            <span class="hidden sm:inline text-stone-400">|</span>
+            <span><span id="user-count" class="font-bold text-stone-900">14,204</span> Members Active Now</span>
+            <span class="inline-flex items-center gap-1.5 text-green-700 font-semibold">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+                </span>
+                Verified Active
+            </span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-9 h-9 bg-accent rounded-lg flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
+                        <iconify-icon icon="lucide:globe" class="text-white text-lg"></iconify-icon>
+                    </div>
+                    <span class="font-semibold text-lg tracking-tight text-stone-900">Global<span class="text-stone-500">RewardsHub</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+                    <a href="#how-it-works" class="hover:text-accent transition-colors">How It Works</a>
+                    <a href="#why-join" class="hover:text-accent transition-colors">Benefits</a>
+                    <a href="#faq" class="hover:text-accent transition-colors">FAQ</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenu = !mobileMenu" class="md:hidden p-2 rounded-lg hover:bg-white/50 transition-colors">
+                    <iconify-icon icon="lucide:menu" x-show="!mobileMenu" class="text-2xl text-stone-800"></iconify-icon>
+                    <iconify-icon icon="lucide:x" x-show="mobileMenu" x-cloak class="text-2xl text-stone-800"></iconify-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" x-cloak x-transition class="md:hidden glass-panel border-t border-white/20 px-6 py-4 space-y-3">
+            <a @click="mobileMenu = false" href="#how-it-works" class="block py-2 font-medium text-stone-700">How It Works</a>
+            <a @click="mobileMenu = false" href="#why-join" class="block py-2 font-medium text-stone-700">Benefits</a>
+            <a @click="mobileMenu = false" href="#faq" class="block py-2 font-medium text-stone-700">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <!-- Decorative Blurs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-[#e1d5c7] rounded-full blur-3xl opacity-60 mix-blend-multiply"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 bg-[#d4c4b5] rounded-full blur-3xl opacity-60 mix-blend-multiply"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="glass-panel rounded-3xl p-8 md:p-10 shadow-xl">
+                    <div class="inline-flex items-center gap-2 bg-white/60 border border-stone-200 text-stone-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+                        <iconify-icon icon="lucide:shield-check" class="text-green-700 text-sm"></iconify-icon>
+                        Proven Digital Rewards Platform
+                    </div>
+
+                    <h1 class="text-4xl md:text-5xl font-semibold text-stone-900 leading-tight tracking-tight mb-6">
+                        Earn Rewards Online by Completing Simple Tasks
+                    </h1>
+                    <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                        Join the global standard for market research. Help world-class brands improve their products while earning digital gift cards, PayPal cash, and premium rewards.
+                    </p>
+
+                    <h4 class="text-xs uppercase tracking-widest text-stone-500 font-bold mb-4">Choose Your Country Portal:</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- US Button -->
+                        <a href="#" class="btn-animate flex items-center justify-between bg-stone-900 text-white p-4 rounded-2xl font-medium group">
+                            <span class="flex items-center gap-2"><span class="text-xl">🇺🇸</span> USA</span>
+                            <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                        <!-- UK Button -->
+                        <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 border border-stone-300 p-4 rounded-2xl font-medium group shadow-sm hover:border-stone-400">
+                            <span class="flex items-center gap-2"><span class="text-xl">🇬🇧</span> UK</span>
+                            <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                        <!-- France Button -->
+                        <a href="#" class="btn-animate flex items-center justify-between bg-stone-900 text-white p-4 rounded-2xl font-medium group">
+                            <span class="flex items-center gap-2"><span class="text-xl">🇫🇷</span> France</span>
+                            <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                        <!-- Other Button -->
+                        <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 border border-stone-300 p-4 rounded-2xl font-medium group shadow-sm hover:border-stone-400">
+                            <span class="flex items-center gap-2"><span class="text-xl">🌍</span> Other</span>
+                            <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative hidden lg:block">
+                    <div class="absolute -inset-4 bg-white/20 rounded-3xl blur-xl"></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Dashboard" class="relative rounded-2xl shadow-2xl border border-white/50 w-full object-cover h-[500px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Board -->
+    <section class="py-16 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                <div class="glass-card p-6 rounded-2xl text-center hover:shadow-md transition-shadow">
+                    <h3 class="text-3xl font-bold text-accent mb-1">140k+</h3>
+                    <p class="text-sm font-medium text-stone-600 uppercase tracking-wider">Global Members</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center hover:shadow-md transition-shadow">
+                    <h3 class="text-3xl font-bold text-accent mb-1">$2.8M</h3>
+                    <p class="text-sm font-medium text-stone-600 uppercase tracking-wider">Total Rewards</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center hover:shadow-md transition-shadow">
+                    <h3 class="text-3xl font-bold text-accent mb-1">4.9/5</h3>
+                    <p class="text-sm font-medium text-stone-600 uppercase tracking-wider">Trust Score</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center hover:shadow-md transition-shadow">
+                    <h3 class="text-3xl font-bold text-accent mb-1">24/7</h3>
+                    <p class="text-sm font-medium text-stone-600 uppercase tracking-wider">Access</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Image -->
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Team working" class="rounded-2xl shadow-lg w-full object-cover h-[450px]">
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight mb-6">Redefining the Value of Your Time</h2>
+                    <div class="space-y-4 text-stone-600 text-lg leading-relaxed">
+                        <p>The digital economy has changed forever. Everyday actions that you already perform—browsing the web, testing new apps, and sharing your opinion—are now valuable assets for multinational corporations.</p>
+                        <p>Global Rewards Hub acts as the secure bridge between you and the world's most innovative brands. Instead of your data being harvested for free, we ensure you are compensated for your insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Economics / Cards Section -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight mb-4">The Economics of Feedback</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto">Ever wondered why companies are willing to provide rewards for your surveys? It’s not charity—it’s high-level market intelligence.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-lg transition-shadow relative overflow-hidden group">
+                    <span class="absolute top-0 right-0 w-20 h-20 bg-blue-100 rounded-full -mr-10 -mt-10 opacity-50 group-hover:opacity-100 transition-opacity"></span>
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-xl mb-5 relative z-10">
+                        <iconify-icon icon="lucide:bar-chart-2"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-stone-800 relative z-10">Market Research</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed relative z-10">Before launching a $100M product, brands need to know what you think. Your survey responses guide the future of global retail.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-lg transition-shadow relative overflow-hidden group">
+                    <span class="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full -mr-10 -mt-10 opacity-50 group-hover:opacity-100 transition-opacity"></span>
+                    <div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl mb-5 relative z-10">
+                        <iconify-icon icon="lucide:smartphone"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-stone-800 relative z-10">Product Testing</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed relative z-10">Developers need real-world feedback on their mobile apps. You get to test new tech before it hits the mass market.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl hover:shadow-lg transition-shadow relative overflow-hidden group">
+                    <span class="absolute top-0 right-0 w-20 h-20 bg-purple-100 rounded-full -mr-10 -mt-10 opacity-50 group-hover:opacity-100 transition-opacity"></span>
+                    <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center text-xl mb-5 relative z-10">
+                        <iconify-icon icon="lucide:lightbulb"></iconify-icon>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-stone-800 relative z-10">User Sentiment</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed relative z-10">Improving a service requires understanding user pain points. Your feedback directly shapes the tools millions use every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="how-it-works" class="py-20 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight mb-4">A Simplified 5-Step Journey</h2>
+                <div class="w-16 h-1 bg-accent mx-auto rounded-full opacity-50"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Step 1 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-stone-900 text-white rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">1</div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-800 mb-1">Choose Your Portal</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Select your region to access localized tasks specific to your demographic market.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-stone-900 text-white rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">2</div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-800 mb-1">Secure Authentication</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Complete a quick profile setup. This ensures we send you tasks relevant to your interests.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-stone-900 text-white rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">3</div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-800 mb-1">Engage with Tasks</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Select from a library of available surveys, app trials, or research offers on your dashboard.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-stone-900 text-white rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">4</div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-800 mb-1">Accumulate Credits</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Each successful completion adds points or cash directly to your verified account balance.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 items-start hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-stone-900 text-white rounded-xl flex items-center justify-center text-xl font-bold flex-shrink-0 shadow-md">5</div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-800 mb-1">Redeem & Enjoy</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Withdraw your earnings via PayPal, or choose from hundreds of digital gift card options like Amazon, Apple, and Google Play.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join / Dark Section -->
+    <section id="why-join" class="py-24 px-6 bg-stone-900 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-8">Why Join the Hub?</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <iconify-icon icon="lucide:check" class="text-green-400 text-sm"></iconify-icon>
+                            </div>
+                            <div>
+                                <strong class="text-white">Total Flexibility:</strong>
+                                <span class="text-stone-400"> No schedules. Participate when you want, where you want.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <iconify-icon icon="lucide:check" class="text-green-400 text-sm"></iconify-icon>
+                            </div>
+                            <div>
+                                <strong class="text-white">Zero Skill Barrier:</strong>
+                                <span class="text-stone-400"> No advanced degrees required. Your honest opinion is the only qualification.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <iconify-icon icon="lucide:check" class="text-green-400 text-sm"></iconify-icon>
+                            </div>
+                            <div>
+                                <strong class="text-white">Exclusive Tech Access:</strong>
+                                <span class="text-stone-400"> Be the first to see new apps and services before they go public.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Image -->
+                <div class="relative hidden lg:block">
+                    <div class="absolute -inset-4 bg-white/5 rounded-3xl blur-xl"></div>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop" alt="Digital Rewards" class="relative rounded-2xl shadow-2xl border border-white/10 w-full object-cover h-[400px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-semibold text-center text-stone-900 mb-16 tracking-tight">Member Success Stories</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col h-full hover:shadow-md transition-shadow">
+                    <p class="text-stone-600 italic text-sm leading-relaxed mb-4 flex-grow">"I was skeptical at first, but after my first $50 PayPal payout, I was hooked. It’s the perfect way to earn while watching TV in the evenings."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200/50">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop" alt="James" class="w-9 h-9 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-sm text-stone-800">James R.</p>
+                            <p class="text-xs text-stone-500">New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col h-full hover:shadow-md transition-shadow">
+                    <p class="text-stone-600 italic text-sm leading-relaxed mb-4 flex-grow">"The app testing is actually fun! I’ve discovered three of my now-favorite games through this platform and got paid to find bugs."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200/50">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop" alt="Emily" class="w-9 h-9 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-sm text-stone-800">Emily W.</p>
+                            <p class="text-xs text-stone-500">London, UK</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col h-full hover:shadow-md transition-shadow">
+                    <p class="text-stone-600 italic text-sm leading-relaxed mb-4 flex-grow">"Très facile à utiliser. Je gagne des cartes cadeaux Amazon chaque mois, ce qui m'aide énormément pour mes achats en ligne."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200/50">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop" alt="Lucas" class="w-9 h-9 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-sm text-stone-800">Lucas M.</p>
+                            <p class="text-xs text-stone-500">Paris, France</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col h-full hover:shadow-md transition-shadow">
+                    <p class="text-stone-600 italic text-sm leading-relaxed mb-4 flex-grow">"Global Rewards Hub is much more professional than other sites. The dashboard is clean and the rewards are processed very quickly."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-stone-200/50">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop" alt="Sarah" class="w-9 h-9 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-sm text-stone-800">Sarah K.</p>
+                            <p class="text-xs text-stone-500">Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid CTA -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto glass-panel rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div class="absolute -left-10 top-0 w-40 h-40 bg-[#e1d5c7] rounded-full blur-2xl opacity-60"></div>
+            <div class="absolute -right-10 bottom-0 w-40 h-40 bg-[#d4c4b5] rounded-full blur-2xl opacity-60"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-2xl md:text-3xl font-semibold text-stone-900 mb-4">Ready to Get Started?</h2>
+                <p class="text-stone-600 mb-8">Choose your region below to see available tasks in your area.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <a href="#" class="btn-animate flex items-center justify-between bg-stone-900 text-white p-4 rounded-2xl font-medium group">
+                        <span class="flex items-center gap-2"><span class="text-xl">🇺🇸</span> USA – Click Here</span>
+                        <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+                    <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 border border-stone-300 p-4 rounded-2xl font-medium group">
+                        <span class="flex items-center gap-2"><span class="text-xl">🇬🇧</span> UK – Click Here</span>
+                        <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+                    <a href="#" class="btn-animate flex items-center justify-between bg-stone-900 text-white p-4 rounded-2xl font-medium group">
+                        <span class="flex items-center gap-2"><span class="text-xl">🇫🇷</span> France – Click Here</span>
+                        <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+                    <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 border border-stone-300 p-4 rounded-2xl font-medium group">
+                        <span class="flex items-center gap-2"><span class="text-xl">🌍</span> Other Countries</span>
+                        <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips & FAQ -->
+    <section id="faq" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16">
+                
+                <!-- Tips Column -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <h2 class="text-2xl font-semibold text-stone-900 mb-6 tracking-tight">Tips for New Earners</h2>
+                    <div class="space-y-6 text-stone-600">
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                            <div>
+                                <strong class="text-stone-800">Complete Your Profile Fully:</strong>
+                                <p class="text-sm">The more detail we have, the higher-paying tasks we can send you.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                            <div>
+                                <strong class="text-stone-800">Be Honest:</strong>
+                                <p class="text-sm">Brands look for consistent, real feedback. Inconsistent answers can lead to account flags.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                            <div>
+                                <strong class="text-stone-800">Set a Daily Goal:</strong>
+                                <p class="text-sm">Even $5 a day adds up to $150 a month with minimal effort.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center flex-shrink-0 font-bold">4</div>
+                            <div>
+                                <strong class="text-stone-800">Check Regularly:</strong>
+                                <p class="text-sm">New high-value app trials are often claimed quickly. Refresh your portal once a day.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Column -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-stone-900 mb-6 tracking-tight">Common Questions</h2>
+                    <div class="space-y-3">
+                        <!-- FAQ 1 -->
+                        <div class="glass-card rounded-xl overflow-hidden">
+                            <button @click="openFaq = (openFaq === 1 ? null : 1)" class="w-full px-5 py-4 text-left font-medium flex justify-between items-center hover:bg-white/20 transition-colors">
+                                <span class="text-stone-800">How do I get paid?</span>
+                                <iconify-icon icon="lucide:chevron-down" class="text-stone-500 transition-transform" :class="{ 'rotate-180': openFaq === 1 }"></iconify-icon>
+                            </button>
+                            <div x-show="openFaq === 1" x-collapse class="px-5 pb-4 text-stone-600 text-sm leading-relaxed">
+                                We offer multiple withdrawal methods including PayPal, direct bank transfer (in select regions), and digital gift cards for brands like Amazon, Starbucks, and Walmart.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="glass-card rounded-xl overflow-hidden">
+                            <button @click="openFaq = (openFaq === 2 ? null : 2)" class="w-full px-5 py-4 text-left font-medium flex justify-between items-center hover:bg-white/20 transition-colors">
+                                <span class="text-stone-800">Is there a cost to join?</span>
+                                <iconify-icon icon="lucide:chevron-down" class="text-stone-500 transition-transform" :class="{ 'rotate-180': openFaq === 2 }"></iconify-icon>
+                            </button>
+                            <div x-show="openFaq === 2" x-collapse class="px-5 pb-4 text-stone-600 text-sm leading-relaxed">
+                                Absolutely not. Global Rewards Hub is 100% free. If any site asks you to pay to "access" tasks, it is likely a scam. We pay you, not the other way around.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="glass-card rounded-xl overflow-hidden">
+                            <button @click="openFaq = (openFaq === 3 ? null : 3)" class="w-full px-5 py-4 text-left font-medium flex justify-between items-center hover:bg-white/20 transition-colors">
+                                <span class="text-stone-800">How much can I earn?</span>
+                                <iconify-icon icon="lucide:chevron-down" class="text-stone-500 transition-transform" :class="{ 'rotate-180': openFaq === 3 }"></iconify-icon>
+                            </button>
+                            <div x-show="openFaq === 3" x-collapse class="px-5 pb-4 text-stone-600 text-sm leading-relaxed">
+                                Earnings vary based on time commitment and location. While some members earn $50/month for casual use, dedicated participants can earn significantly more by qualifying for high-value research studies.
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="glass-card rounded-xl overflow-hidden">
+                            <button @click="openFaq = (openFaq === 4 ? null : 4)" class="w-full px-5 py-4 text-left font-medium flex justify-between items-center hover:bg-white/20 transition-colors">
+                                <span class="text-stone-800">Are my data and privacy protected?</span>
+                                <iconify-icon icon="lucide:chevron-down" class="text-stone-500 transition-transform" :class="{ 'rotate-180': openFaq === 4 }"></iconify-icon>
+                            </button>
+                            <div x-show="openFaq === 4" x-collapse class="px-5 pb-4 text-stone-600 text-sm leading-relaxed">
+                                Yes. We use industry-standard SSL encryption and never sell your personally identifiable information. Responses provided to companies are anonymized for research purposes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 px-6 bg-stone-900 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-tight">Your Next Reward is Just a Click Away</h2>
+            <p class="text-stone-400 mb-10 text-lg">Join 140,000+ people and start earning for your opinion today.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
+                <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 p-4 rounded-2xl font-medium group">
+                    <span class="flex items-center gap-2"><span class="text-xl">🇺🇸</span> USA – Join Now</span>
+                    <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </a>
+                <a href="#" class="btn-animate flex items-center justify-between bg-white text-stone-900 p-4 rounded-2xl font-medium group">
+                    <span class="flex items-center gap-2"><span class="text-xl">🇬🇧</span> UK – Join Now</span>
+                    <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </a>
+                <a href="#" class="btn-animate flex items-center justify-between bg-white/10 text-white border border-white/20 p-4 rounded-2xl font-medium group backdrop-blur hover:bg-white/20">
+                    <span class="flex items-center gap-2"><span class="text-xl">🇫🇷</span> France – Join Now</span>
+                    <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </a>
+                <a href="#" class="btn-animate flex items-center justify-between bg-white/10 text-white border border-white/20 p-4 rounded-2xl font-medium group backdrop-blur hover:bg-white/20">
+                    <span class="flex items-center gap-2"><span class="text-xl">🌍</span> Global Portal</span>
+                    <iconify-icon icon="lucide:arrow-right" class="opacity-70 group-hover:translate-x-1 transition-transform"></iconify-icon>
+                </a>
+            </div>
+
+            <div class="flex justify-center gap-8 opacity-40">
+                <iconify-icon icon="logos:paypal" class="text-3xl grayscale hover:grayscale-0 transition-all"></iconify-icon>
+                <iconify-icon icon="logos:amazon-icon" class="text-3xl grayscale hover:grayscale-0 transition-all"></iconify-icon>
+                <iconify-icon icon="logos:apple" class="text-3xl grayscale hover:grayscale-0 transition-all"></iconify-icon>
+                <iconify-icon icon="logos:google-play-icon" class="text-3xl grayscale hover:grayscale-0 transition-all"></iconify-icon>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0c0a09] text-stone-500 py-16 px-6 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-stone-800 rounded-lg flex items-center justify-center">
+                            <iconify-icon icon="lucide:globe" class="text-stone-400"></iconify-icon>
+                        </div>
+                        <span class="font-semibold text-stone-300">GlobalRewardsHub</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">Building the world's most trusted interface for digital consumer research.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-stone-300 mb-3 text-sm uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">How it Works</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Press Relations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-stone-300 mb-3 text-sm uppercase tracking-wider">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-stone-900 pt-8 text-center text-xs">
+                <p class="mb-2">© 2026 Global Rewards Hub. All Rights Reserved.</p>
+                <p class="text-stone-700">Disclaimer: Individual earnings may vary based on effort, location, and demographic demand. This platform is for supplemental income.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simulated Activity Counter
+        let count = 14204;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5);
+            const el = document.getElementById('user-count');
+            if(el) el.innerText = count.toLocaleString();
+        }, 8000);
+    </script>
+</body>
+</html>
